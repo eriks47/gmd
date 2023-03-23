@@ -23,6 +23,13 @@ TEST(HeaderTest, DetectsClassName)
     EXPECT_EQ(header.GetClassName(), "FileWrapper_t");
 }
 
+TEST(HeaderTest, DetectsNamespaceName)
+{
+    std::string contents = "#include <fstream>\n\nnamespace FileWrapper_t { }\n";
+    Header header = CreateHeaderWithContents(contents);
+    EXPECT_EQ(header.GetClassName(), "FileWrapper_t");
+}
+
 TEST(HeaderTest, ExtractsDeclaration)
 {
     std::string contents = 

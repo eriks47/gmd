@@ -34,17 +34,18 @@ TEST(SourceTest, InsertsInclude)
 TEST(SourceTest, ImplementsMethod)
 {
     std::string sourcePath = "Window.cpp";
+    std::filesystem::remove(sourcePath);
     Source source(sourcePath, "Window");
     std::vector<std::string> declarations = {"[[nodiscard]] int GetWidth() const"};
 
     source.ImplementMethods(declarations);
 
     EXPECT_EQ(source.GetContents(), "[[nodiscard]] int Window::GetWidth() const" + bracePattern);
-    std::filesystem::remove(sourcePath);
 }
 
 TEST(SourceTest, DoesntImplementMethodIfAlreadyImplemented)
 {
+    std::filesystem::remove("Window.cpp");
     std::string contents =
         "[[nodiscard]] int Window::GetWidth() const\n"
         "{\n"
@@ -54,5 +55,4 @@ TEST(SourceTest, DoesntImplementMethodIfAlreadyImplemented)
     source.ImplementMethods({"[[nodiscard]] int GetWidth() const"});
 
     EXPECT_EQ(source.GetContents(), contents);
-    std::filesystem::remove("Window.hpp");
 }
