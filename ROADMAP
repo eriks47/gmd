@@ -7,9 +7,16 @@ Man page
 
 IN PROCCESS:
 Add tests for Source class
+Operators
+!gmd %
+multiline declarations
+readme
+error handling
+veird template behavior
 
 DONE: 
 Make path resolver map different extensions
 Add tests for PathResolver class
 Make sure pointer returns work properly
 Move brace pattern to Config.hpp
+Namespaces

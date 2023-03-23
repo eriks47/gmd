@@ -12,6 +12,7 @@ const std::regex REGEX_WHITESPACE(R"(^\s*[[:blank:]]*)");
 const std::regex REGEX_LINE_COMMENTS(R"(//.*\n)");
 const std::regex REGEX_ACCESS_MODIFIERS(R"(^[\n\s}{]*(private|protected|public):)");
 const std::regex REGEX_CLASS_NAME(R"(class \w*(\n|\s|/|\{|/))");
+const std::regex REGEX_NAMESPACE_NAME(R"(namespace \w*(\n|\s|/|\{|/))");
 
 Header::Header(const std::filesystem::path &path)
     : m_Path(path), m_Filename(path.filename())
@@ -79,7 +80,11 @@ void Header::ExtractClassName()
     std::regex_search(m_Contents, matchInfo, REGEX_CLASS_NAME);
     if (matchInfo.empty())
     {
-        std::cout << "No classname\n";
+        std::regex_search(m_Contents, matchInfo, REGEX_NAMESPACE_NAME);
+        if (matchInfo.empty())
+        {
+            std::cout << "Error: no class name found\n";
+        }
     }
 
     std::string matched = matchInfo.str();
