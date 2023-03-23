@@ -8,13 +8,14 @@ generator.
 ##### Requirements
 
 cmake (version 3.20 or above)   
-vcpkg
-c++23
+vcpkg   
+c++23   
+ninja
 
 ##### Build proccess
 
 ```shell
-cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=/path/to/vcpkg/script
+cmake -B build -S . -G Ninja -DCMAKE_TOOLCHAIN_FILE=/path/to/vcpkg/script
 cmake --build Build
 ```
 ### Running
