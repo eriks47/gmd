@@ -3,7 +3,7 @@
 A simple regex based C++ method and function implementation
 generator.
 
-[Resources/screenshot.png](screenshot)
+![Resources/screenshot.png](screenshot)
 
 ### Building
 
