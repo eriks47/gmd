@@ -1,0 +1,11 @@
+# vcpkg
+temp.txt
+vcpkg_installed
+
+# Build
+Build/
+compile_commands.json
+
+# Examples
+Example.cpp
+Example.hpp
