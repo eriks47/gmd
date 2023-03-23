@@ -22,6 +22,16 @@ target_link_libraries(tests PRIVATE
     GTest::gmock
     GTest::gmock_main
 )
-
 add_test(AllTests tests)
 
+add_custom_target(run_tests
+    DEPENDS main tests
+    COMMAND ${CMAKE_CTEST_COMMAND}
+    COMMENT "Running tests"
+)
+
+add_custom_target(install_to_bin
+    DEPENDS main
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:main> /usr/bin
+    COMMENT "Running tests"
+)
