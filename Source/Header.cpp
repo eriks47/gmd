@@ -7,7 +7,7 @@
 #include "Utillities.hpp"
 
 // Matches method declaration for a class
-const std::regex REGEX_DECLARATION(R"(^[\w:<>\s\[\]]*\s*[\w~&*:]+\([^{}]*\)\s*[\w\s>\-&:\*]*$)");
+const std::regex REGEX_DECLARATION(R"(^[\w:<>\s\[\]]*\s*[\w~&*:<>|=+-/~!%^,\[\]\(\)]+\([^{}]*\)\s*[\w\s>\-&:\*]*$)");
 const std::regex REGEX_WHITESPACE(R"(^\s*[[:blank:]]*)");
 const std::regex REGEX_LINE_COMMENTS(R"(//.*\n)");
 const std::regex REGEX_ACCESS_MODIFIERS(R"(^[\n\s}{]*(private|protected|public):)");

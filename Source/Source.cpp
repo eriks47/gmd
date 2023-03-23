@@ -7,7 +7,7 @@
 #include "Utillities.hpp"
 #include "Config.hpp"
 
-const std::regex REGEX_METHOD_NAME(R"([\w~:]+\()");
+const std::regex REGEX_METHOD_NAME(R"END([\w~:]+[\(\[<>\+\-\*/%\^=&\|~!,])END");
 const std::regex REGEX_HEADER_ONLY_KEYWORDS(R"((static|override|explicit|virtual)\s*)");
 const std::regex REGEX_DEFAULT_PARAM_VALUES(R"(\s*=\s*.*(,|"))");
 const std::regex REGEX_IMPLEMENTATION(R"(^[\w:<>\s\[\]]*\s*[\w~&*:]+\([^{}]*\)\s*[\w\s>\-]*$)");
