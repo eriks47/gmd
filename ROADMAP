@@ -1,12 +1,12 @@
 TODO:
 Add support for namepspaces
-Add tests for Source class
 Add tests for namepspaces
 Maybe add support for multiple classes in one header?
 Proper error handling
 Man page
 
 IN PROCCESS:
+Add tests for Source class
 
 DONE: 
 Make path resolver map different extensions

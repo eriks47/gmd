@@ -11,6 +11,8 @@ void Utillities::ReadFileToString(const std::filesystem::path &path, std::string
         return;
     }
 
+    buffer.clear();
+
     // TODO(erik): Replace with a more efficent implementation
     std::ifstream fileStream(path);
     std::noskipws(fileStream);

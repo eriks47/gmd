@@ -18,7 +18,6 @@ private:
 
 public:
     Source(const std::filesystem::path &path, const std::string &className);
-    ~Source() = default;
 
     void ImplementMethods(const std::vector<std::string> &declarations);
     void InsertInclude(const std::filesystem::path &headerPath);
