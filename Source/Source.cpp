@@ -29,7 +29,7 @@ void Source::ImplementMethods(const std::vector<std::string> &declarations)
         m_FileStream.flush();
         m_FileStream.close();
     }
-    m_FileStream = std::ofstream(m_Filename, std::ios::app);
+    m_FileStream = std::ofstream(m_Path, std::ios::app);
 
     std::cout << "FOUND: \n";
     for (const auto &found : m_Implementations)

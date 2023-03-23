@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
         pathPair = pathResolver.GetPaths();
     }
 
-    auto [headerPath, sourcePath] = pathPair;
+    auto [headerPath, sourcePath, wasProvidedWithSource] = pathPair;
 
     assert(exists(headerPath));
 
@@ -49,6 +49,10 @@ int main(int argc, char *argv[])
     auto declarations = header.GetDeclarations();
     auto className = header.GetClassName();
 
+    if (!wasProvidedWithSource)
+    {
+        headerPath = headerPath.filename();
+    }
     Source source(sourcePath, className);
     source.InsertInclude(headerPath);
     source.ImplementMethods(declarations);

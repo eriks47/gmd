@@ -5,7 +5,8 @@
 struct FilePathPair
 {
     std::filesystem::path headerPath; 
-    std::filesystem::path sourcePath; 
+    std::filesystem::path sourcePath;
+    bool wasProvidedWithSource;
 };
 
 class PathResolver

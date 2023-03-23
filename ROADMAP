@@ -8,11 +8,11 @@ Man page
 IN PROCCESS:
 Add tests for Source class
 Operators
-!gmd %
 multiline declarations
 readme
 error handling
 veird template behavior
+proper cp to /usr/bin/
 
 DONE: 
 Make path resolver map different extensions

@@ -43,6 +43,7 @@ PathResolver::PathResolver(const char *first, const char *second)
 [[nodiscard]] FilePathPair PathResolver::GetPaths()
 {
     FilePathPair pathPair;
+    pathPair.wasProvidedWithSource = true;
 
     if (secondPath.empty())
     {
@@ -55,6 +56,7 @@ PathResolver::PathResolver(const char *first, const char *second)
         {
             pathPair.headerPath = firstPath;
             pathPair.sourcePath = HeaderToSource(firstPath);
+            pathPair.wasProvidedWithSource = false;
         }
     }
     else
