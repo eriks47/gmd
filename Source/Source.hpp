@@ -22,6 +22,7 @@ public:
 
     void ImplementMethods(const std::vector<std::string> &declarations);
     void InsertInclude(const std::filesystem::path &headerPath);
+    [[nodiscard]] std::string GetContents() const { return m_Contents; };
 
 private:
     std::string DeclarationToImplementation(const std::string &declaration);

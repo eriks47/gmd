@@ -24,3 +24,4 @@ target_link_libraries(tests PRIVATE
 )
 
 add_test(AllTests tests)
+

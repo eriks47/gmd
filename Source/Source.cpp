@@ -49,6 +49,7 @@ void Source::ImplementMethods(const std::vector<std::string> &declarations)
 
         m_FileStream << implementation << bracePattern;
     }
+    m_FileStream.flush();
     Utillities::ReadFileToString(m_Path, m_Contents);
 }
 
