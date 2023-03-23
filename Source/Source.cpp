@@ -7,7 +7,7 @@
 #include "Utillities.hpp"
 #include "Config.hpp"
 
-const std::regex REGEX_METHOD_NAME(R"END([\w~:]+[\(\[<>\+\-\*/%\^=&\|~!,])END");
+const std::regex REGEX_METHOD_NAME(R"END([\w~:]+[\(\[<>\+\-\*/%\^=&\|~!])END");
 const std::regex REGEX_HEADER_ONLY_KEYWORDS(R"((static|override|explicit|virtual)\s*)");
 const std::regex REGEX_DEFAULT_PARAM_VALUES(R"(\s*=\s*.*(,|"))");
 const std::regex REGEX_IMPLEMENTATION(R"(^[\w:<>\s\[\]]*\s*[\w~&*:]+\([^{}]*\)\s*[\w\s>\-]*$)");
@@ -15,9 +15,7 @@ const std::regex REGEX_IMPLEMENTATION(R"(^[\w:<>\s\[\]]*\s*[\w~&*:]+\([^{}]*\)\s
 Source::Source(const std::filesystem::path &path, const std::string &className)
     : m_Path(path), m_Filename(path.filename()), m_ClassName(className)
 {
-    std::cout << "Creating source object\n";
     Utillities::ReadFileToString(m_Path, m_Contents);
-    std::cout << "Contents: " << m_Contents << "\n";
 }
 
 void Source::ImplementMethods(const std::vector<std::string> &declarations)
@@ -31,19 +29,11 @@ void Source::ImplementMethods(const std::vector<std::string> &declarations)
     }
     m_FileStream = std::ofstream(m_Path, std::ios::app);
 
-    std::cout << "FOUND: \n";
-    for (const auto &found : m_Implementations)
-    {
-        std::cout << found << "\n";
-    }
-    std::cout << "ENDFOUND\n";
     for (const auto &declaration : declarations)
     {
         std::string implementation = DeclarationToImplementation(declaration);
-        std::cout << implementation << "\n";
         if (m_Implementations.contains(implementation))
         {
-            std::cout << "Contains\n";
             continue;
         }
 
@@ -76,7 +66,6 @@ void Source::ExtractImplementations()
         std::regex REGEX_REMOVE_NAMESPACE(m_ClassName + "::");
         if (std::regex_match(line, REGEX_IMPLEMENTATION))
         {
-            std::cout << line << "\n";
             m_Implementations.insert(line);
         }
     }

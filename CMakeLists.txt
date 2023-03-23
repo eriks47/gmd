@@ -24,8 +24,13 @@ target_link_libraries(tests PRIVATE
 )
 add_test(AllTests tests)
 
-add_custom_target(run_tests
+add_custom_target(build_and_test
     DEPENDS main tests
+    COMMAND ${CMAKE_CTEST_COMMAND}
+    COMMENT "Running tests"
+)
+
+add_custom_target(run_tests
     COMMAND ${CMAKE_CTEST_COMMAND}
     COMMENT "Running tests"
 )
@@ -33,5 +38,5 @@ add_custom_target(run_tests
 add_custom_target(install_to_bin
     DEPENDS main
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:main> /usr/bin
-    COMMENT "Running tests"
+    COMMENT "Installing"
 )

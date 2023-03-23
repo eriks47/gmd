@@ -1,5 +1,4 @@
 TODO:
-Add support for namepspaces
 Add tests for namepspaces
 Maybe add support for multiple classes in one header?
 Proper error handling
@@ -7,17 +6,15 @@ Man page
 
 IN PROCCESS:
 Add tests for Source class
-multiline declarations
 readme
 error handling
-veird template behavior
-proper cp to /usr/bin/
+dont repeat implementations for method headers with newlines
 
 DONE: 
 Make path resolver map different extensions
 Add tests for PathResolver class
 Make sure pointer returns work properly
 Move brace pattern to Config.hpp
-Namespaces
+Add support for namepspaces
 !gmd 
 Operators
