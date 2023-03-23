@@ -9,6 +9,7 @@
 #include "Header.hpp"
 #include "Source.hpp"
 #include "Config.hpp"
+#include "PathResolver.hpp"
 
 constexpr bool DEBUG = false;
 
@@ -28,40 +29,19 @@ int main(int argc, char *argv[])
         reportError("improper usage");
     }
 
-    path headerPath;
-    path sourcePath;
-    bool didProvideSource = true;
+    FilePathPair pathPair;
     if (argc == 2)
     {
-        path argument(argv[1]);
-        if (argument.extension() == ".cpp")
-        {
-            sourcePath = argument;
-            headerPath = argument.replace_extension(".hpp");
-        }
-        else if (argument.extension() == ".hpp")
-        {
-            headerPath = argument;
-            sourcePath = argument.replace_extension(".cpp");
-            didProvideSource = false;
-        }
+        PathResolver pathResolver(argv[1]);
+        pathPair = pathResolver.GetPaths();
     }
     else
     {
-        // Both filenames are given
-        path firstArgument(argv[1]);
-        path secondArgument(argv[2]);
-        if (sourceExtensions.contains(firstArgument.extension()))
-        {
-            sourcePath = std::move(firstArgument);
-            headerPath = std::move(secondArgument);
-        }
-        else
-        {
-            sourcePath = std::move(secondArgument);
-            headerPath = std::move(firstArgument);
-        }
+        PathResolver pathResolver(argv[1], argv[2]);
+        pathPair = pathResolver.GetPaths();
     }
+
+    auto [headerPath, sourcePath] = pathPair;
 
     assert(exists(headerPath));
 

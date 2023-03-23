@@ -9,3 +9,5 @@ const std::unordered_set<std::string> sourceExtensions = {
     "cc",
     "c++"
 };
+
+const std::string bracePattern = "\n{\n\n}\n\n";

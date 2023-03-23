@@ -10,15 +10,17 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS on)
 find_package(GTest CONFIG REQUIRED)
 
 file(GLOB sourcefiles "Source/*.cpp" "Source/*.hpp")
-file(GLOB tests "Tests/*.cpp")
+file(GLOB tests "Tests/*.cpp" "Source/*.cpp" "Source/*.hpp")
+list(REMOVE_ITEM tests "${CMAKE_SOURCE_DIR}/Source/Main.cpp")
 
 add_executable(main ${sourcefiles})
 
-add_executable(tests ${tests} Source/Utillities.hpp Source/Utillities.cpp Source/Header.cpp Source/Header.hpp)
+add_executable(tests ${tests})
 target_link_libraries(tests PRIVATE 
     GTest::gtest
     GTest::gtest_main
     GTest::gmock
     GTest::gmock_main
 )
+
 add_test(AllTests tests)

@@ -205,3 +205,30 @@ TEST(HeaderTest, ExtractsDestructor)
     ASSERT_EQ(declarations.size(), 1);
     EXPECT_EQ(declarations[0], "~FileWrapper()");
 }
+
+TEST(HeaderTest, ExtractsDeclarationWithPointerReturnType)
+{
+    std::string contents = 
+        "#include <ftsream>\n\n"
+        "class FileWrapper\n"
+        "{\n"
+        "    [[nodiscard]] unsigned int *GetRendererID() const;\n"
+        "}\n";
+    Header header = CreateHeaderWithContents(contents);
+    auto declarations = header.GetDeclarations();
+
+    ASSERT_EQ(declarations.size(), 1);
+    EXPECT_EQ(declarations[0], "[[nodiscard]] unsigned int *GetRendererID() const");
+
+    contents = 
+        "#include <ftsream>\n\n"
+        "class FileWrapper\n"
+        "{\n"
+        "    [[nodiscard]] auto GetRendererID() const -> unsigned int *;\n"
+        "}\n";
+    header = CreateHeaderWithContents(contents);
+    declarations = header.GetDeclarations();
+
+    ASSERT_EQ(declarations.size(), 1);
+    EXPECT_EQ(declarations[0], "[[nodiscard]] auto GetRendererID() const -> unsigned int *");
+}

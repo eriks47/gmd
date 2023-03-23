@@ -5,6 +5,7 @@
 
 #include "Source.hpp"
 #include "Utillities.hpp"
+#include "Config.hpp"
 
 const std::regex REGEX_METHOD_NAME(R"([\w~:]+\()");
 const std::regex REGEX_HEADER_ONLY_KEYWORDS(R"((static|override|explicit|virtual)\s*)");
@@ -46,7 +47,7 @@ void Source::ImplementMethods(const std::vector<std::string> &declarations)
             continue;
         }
 
-        m_FileStream << implementation << "\n{\n\n}\n\n";
+        m_FileStream << implementation << bracePattern;
     }
     Utillities::ReadFileToString(m_Path, m_Contents);
 }

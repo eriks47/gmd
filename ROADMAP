@@ -1,0 +1,15 @@
+TODO:
+Add support for namepspaces
+Add tests for Source class
+Add tests for namepspaces
+Maybe add support for multiple classes in one header?
+Proper error handling
+Man page
+
+IN PROCCESS:
+
+DONE: 
+Make path resolver map different extensions
+Add tests for PathResolver class
+Make sure pointer returns work properly
+Move brace pattern to Config.hpp
