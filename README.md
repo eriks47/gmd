@@ -1,4 +1,4 @@
-***This tool is discontinued and thus the repository archived, please see [generate.nvim](github.com/eriks47/generate.nvim) Neovim plugin
+***This tool is discontinued and thus the repository archived, please see [generate.nvim](https://github.com/eriks47/generate.nvim) Neovim plugin
 for C++ method implementation generation.***
 
 # Generate Method Definitions
